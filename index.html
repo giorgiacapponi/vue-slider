@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <div class="slider-wrapper" tabindex="0">
+                <!-- devo inserire dinamicamente le img quindi devo
+                scorrere l array di oggetti per creare tot class item -->
+                <!-- devo mettere solo un  img visibile che cambierà al click 
+                penso posso usare v-show -->
+
+                <div class="item" v-for="(item,index) in slides " v-show="index===imgVisible" >
+                    <img :src="item.image" :alt="item.title" />
+                    <div class="text">
+                        <h3>{{item.title}}</h3>
+                        <p>
+                            {{item.text}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="thumbs">
+                    <div class="prev" @click="nextPhoto()"></div>
+                    <div class="next" @click="prevPhoto"></div>
+                    <!-- devo inserire dinamicamente le img con un for che
+                    crea tot div thumb -->
+                    <div class="thumb active" v-for="(item,index) in slides" @click="showImgBig(index)">
+                        <img :src="item.image" :alt="item.title" />
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script> -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
